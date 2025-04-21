@@ -252,27 +252,9 @@ const Logo = styled.div`
   align-items: center;
   letter-spacing: 1px;
   
-  span {
-    color: rgba(203, 157, 118, 0.9);
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background-color: rgba(203, 157, 118, 0.1);
-      z-index: -1;
-    }
-  }
-  
-  svg {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    fill: rgba(203, 157, 118, 0.9);
+  img {
+    height: 40px;
+    width: auto;
   }
   
   @media (max-width: 480px) {
@@ -280,9 +262,8 @@ const Logo = styled.div`
     top: 15px;
     left: 15px;
     
-    svg {
-      width: 16px;
-      height: 16px;
+    img {
+      height: 30px;
     }
   }
 `;
@@ -1115,10 +1096,7 @@ const Hero = () => {
       <GlobalStyle />
       
       <Logo>
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2L1 21h22L12 2zm0 4.2L20.1 19h-16L12 6.2z" />
-        </svg>
-        HOME<span>VISION</span>
+        <img src="/home-vision-wensite-logo.svg" alt="HomeVision Logo" />
       </Logo>
       
       <ContentSection>

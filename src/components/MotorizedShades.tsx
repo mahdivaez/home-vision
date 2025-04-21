@@ -66,6 +66,10 @@ const Container = styled.div`
   padding: 0 30px;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
 `;
 
 const ContentWrapper = styled.div<{ inView: boolean }>`
@@ -251,6 +255,11 @@ const PresetsContainer = styled.div`
   display: flex;
   gap: 12px;
   margin-top: 10px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
 `;
 
 const PresetButton = styled.button<{ active: boolean }>`
@@ -270,6 +279,11 @@ const PresetButton = styled.button<{ active: boolean }>`
     transform: translateY(-2px);
     box-shadow: ${props => props.active ? '0 15px 30px rgba(203, 157, 118, 0.4)' : '0 5px 15px rgba(0, 0, 0, 0.1)'};
   }
+  
+  @media (max-width: 480px) {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
 `;
 
 const ScheduleButton = styled.button<{ active: boolean }>`
@@ -286,6 +300,7 @@ const ScheduleButton = styled.button<{ active: boolean }>`
   svg {
     color: rgba(203, 157, 118, 0.9);
     margin-right: 10px;
+    flex-shrink: 0;
   }
   
   .time {
@@ -297,16 +312,26 @@ const ScheduleButton = styled.button<{ active: boolean }>`
   .label {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  div {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .toggle {
     margin-left: auto;
     width: 36px;
     height: 20px;
+    min-width: 36px;
     background: ${props => props.active ? 'rgba(203, 157, 118, 0.9)' : 'rgba(255, 255, 255, 0.2)'};
     border-radius: 10px;
     position: relative;
     transition: all 0.3s ease;
+    flex-shrink: 0;
     
     &::after {
       content: '';
@@ -328,6 +353,18 @@ const ScheduleButton = styled.button<{ active: boolean }>`
       background: ${props => props.active ? 'rgba(203, 157, 118, 1)' : 'rgba(255, 255, 255, 0.3)'};
     }
   }
+  
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    
+    .time {
+      font-size: 0.85rem;
+    }
+    
+    .label {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const Subtitle = styled.div`
@@ -344,6 +381,15 @@ const Title = styled.h2`
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    word-wrap: break-word;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const Description = styled.p`
@@ -351,6 +397,13 @@ const Description = styled.p`
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 40px;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
 `;
 
 const FeaturesList = styled.div`
@@ -367,6 +420,10 @@ const Feature = styled.div<{ delay: number }>`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    align-items: flex-start;
   }
 `;
 
@@ -388,19 +445,34 @@ const FeatureIcon = styled.div`
   }
 `;
 
-const FeatureContent = styled.div``;
+const FeatureContent = styled.div`
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+`;
 
 const FeatureTitle = styled.h4`
   font-size: 1.1rem;
   margin-bottom: 8px;
   font-weight: 600;
   color: #fff;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const FeatureDescription = styled.p`
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
 `;
 
 const AccentCircle = styled.div`
