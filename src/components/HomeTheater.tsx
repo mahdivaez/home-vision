@@ -537,7 +537,12 @@ const HomeTheater: React.FC = () => {
               </FeatureItem>
             </FeaturesList>
             
-            <StyledButton>Explore Theater Solutions</StyledButton>
+            <StyledButton onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Explore Theater Solutions</StyledButton>
           </Content>
         </ContentGrid>
         
@@ -563,7 +568,12 @@ const HomeTheater: React.FC = () => {
             Let our experts design a custom home theater solution that perfectly matches your space, 
             style, and entertainment needs. Schedule a consultation today.
           </CtaDescription>
-          <StyledButton>Schedule a Theater Consultation</StyledButton>
+          <StyledButton onClick={() => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}>Schedule a Theater Consultation</StyledButton>
         </CtaSection>
       </Container>
     </Section>

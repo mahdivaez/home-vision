@@ -382,7 +382,12 @@ const ArchitecturalSpeakers = () => {
                   <FeatureItem key={idx}>{feature}</FeatureItem>
                 ))}
               </FeatureList>
-              <Button>Learn More</Button>
+              <Button onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}>Learn More</Button>
             </ShowcaseContent>
           </Showcase>
         ))}
@@ -393,7 +398,17 @@ const ArchitecturalSpeakers = () => {
             Our team of audio experts is ready to design a custom architectural speaker solution 
             tailored to your home's unique needs and aesthetic.
           </CTADescription>
-          <Button style={{ background: 'white', color: '#2c3e50' }}>Schedule Consultation</Button>
+          <Button 
+            style={{ background: 'white', color: '#2c3e50' }}
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Schedule Consultation
+          </Button>
         </CTASection>
       </Container>
     </SpeakersSection>

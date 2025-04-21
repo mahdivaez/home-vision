@@ -53,6 +53,18 @@ const ContactSection = styled.section`
   background-color: #0a0a0a;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 100px 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 60px 0;
+  }
 `;
 
 const BackgroundPattern = styled.div`
@@ -86,6 +98,14 @@ const Container = styled.div`
   padding: 0 30px;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 15px;
+  }
 `;
 
 const SectionHeader = styled.div<{ inView: boolean }>`
@@ -94,6 +114,14 @@ const SectionHeader = styled.div<{ inView: boolean }>`
   opacity: ${props => props.inView ? 1 : 0};
   transform: translateY(${props => props.inView ? 0 : '30px'});
   transition: all 0.8s ease-out;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -120,6 +148,15 @@ const SectionTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    
+    &::after {
+      width: 60px;
+      height: 2px;
+    }
+  }
 `;
 
 const SectionDescription = styled.p`
@@ -128,6 +165,17 @@ const SectionDescription = styled.p`
   margin: 30px auto 0;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin: 25px auto 0;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 20px auto 0;
+  }
 `;
 
 const FormGrid = styled.div<{ inView: boolean }>`
@@ -143,6 +191,14 @@ const FormGrid = styled.div<{ inView: boolean }>`
     grid-template-columns: 1fr;
     gap: 50px;
   }
+  
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `;
 
 const FormContent = styled.div`
@@ -151,6 +207,14 @@ const FormContent = styled.div`
 
 const ContactInfo = styled.div`
   margin-bottom: 40px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 25px;
+  }
 `;
 
 const ContactTitle = styled.h3`
@@ -160,6 +224,16 @@ const ContactTitle = styled.h3`
   position: relative;
   display: inline-block;
   
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  
   &::after {
     content: '';
     position: absolute;
@@ -168,6 +242,12 @@ const ContactTitle = styled.h3`
     width: 50px;
     height: 2px;
     background: linear-gradient(to right, rgba(203, 157, 118, 0.9), transparent);
+    
+    @media (max-width: 480px) {
+      width: 40px;
+      bottom: -8px;
+      height: 1.5px;
+    }
   }
 `;
 
@@ -176,6 +256,18 @@ const ContactText = styled.p`
   line-height: 1.6;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.8);
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
 `;
 
 const PhoneNumber = styled.div`
@@ -187,6 +279,19 @@ const PhoneNumber = styled.div`
   padding: 20px;
   border: 1px solid rgba(203, 157, 118, 0.2);
   transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+  }
   
   &:hover {
     transform: translateY(-5px);
@@ -207,9 +312,27 @@ const PhoneIcon = styled.div`
   animation: ${pulse} 2s infinite ease-in-out;
   color: rgba(203, 157, 118, 0.9);
   
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  
   svg {
     width: 24px;
     height: 24px;
+    
+    @media (max-width: 480px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -218,6 +341,15 @@ const PhoneDetails = styled.div`
     font-size: 1.1rem;
     color: rgba(203, 157, 118, 0.9);
     margin-bottom: 5px;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
   }
   
   a {
@@ -227,8 +359,23 @@ const PhoneDetails = styled.div`
     text-decoration: none;
     transition: all 0.3s ease;
     
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      word-break: break-word;
+    }
+    
     &:hover {
       color: rgba(203, 157, 118, 0.9);
+    }
+  }
+  
+  p {
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
     }
   }
 `;
@@ -242,7 +389,14 @@ const FeaturesList = styled.ul`
   gap: 20px;
   
   @media (max-width: 768px) {
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  @media (max-width: 480px) {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -263,11 +417,23 @@ const FeatureIcon = styled.div`
   margin-right: 15px;
   flex-shrink: 0;
   color: rgba(203, 157, 118, 0.9);
+  
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    font-size: 0.8rem;
+  }
 `;
 
 const FeatureText = styled.span`
   font-size: 1rem;
   line-height: 1.4;
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
 `;
 
 const FormContainer = styled.div`
@@ -280,29 +446,65 @@ const FormContainer = styled.div`
   
   @media (max-width: 768px) {
     padding: 30px;
+    border-radius: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px;
+    border-radius: 12px;
   }
 `;
 
 const FormHeader = styled.div`
   text-align: center;
   margin-bottom: 40px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 25px;
+  }
 `;
 
 const FormTitle = styled.h3`
   font-size: 1.8rem;
   color: #fff;
   margin-bottom: 15px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
 `;
 
 const FormSubtitle = styled.p`
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+  
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 15px;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -314,6 +516,16 @@ const FormGroup = styled.div`
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.05rem;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    
+    @media (max-width: 480px) {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
   }
   
   input {
@@ -324,6 +536,17 @@ const FormGroup = styled.div`
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
     transition: all 0.3s ease;
+    
+    @media (max-width: 768px) {
+      padding: 12px;
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 10px;
+      font-size: 0.9rem;
+      border-radius: 8px;
+    }
     
     &:focus {
       outline: none;
@@ -345,6 +568,14 @@ const ShimmerLine = styled.div`
   background-size: 200px 100%;
   animation: ${shimmer} 2s infinite linear;
   margin: 20px 0;
+  
+  @media (max-width: 768px) {
+    margin: 15px 0;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 10px 0;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -359,6 +590,17 @@ const StyledButton = styled(Button)`
   cursor: pointer;
   transition: all 0.3s ease;
   
+  @media (max-width: 768px) {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -369,6 +611,10 @@ const ThankYouMessage = styled.div`
   text-align: center;
   padding: 20px;
   color: #fff;
+  
+  @media (max-width: 480px) {
+    padding: 15px;
+  }
 `;
 
 const ThankYouIcon = styled.div`
@@ -382,12 +628,36 @@ const ThankYouIcon = styled.div`
   margin: 0 auto 30px;
   animation: ${float} 3s infinite ease-in-out;
   font-size: 2rem;
+  
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
 `;
 
 const ThankYouTitle = styled.h3`
   font-size: 2rem;
   color: rgba(203, 157, 118, 0.9);
   margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
 `;
 
 const ThankYouText = styled.p`
@@ -395,10 +665,23 @@ const ThankYouText = styled.p`
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const ContactForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ fullName: '', phone: '' });
   const [headerRef, headerInView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -409,11 +692,42 @@ const ContactForm = () => {
     triggerOnce: true,
   });
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally handle the form submission to your backend
-    // For this demo, we'll just show the thank you message
-    setFormSubmitted(true);
+    
+    // Send data to GHL webhook
+    fetch('https://services.leadconnectorhq.com/hooks/XIy9sfqFwX2Pzvq9l7VY/webhook-trigger/e01a048d-7694-408e-9078-e7d5d43188ca', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        formName: 'Contact Form',
+        name: formData.fullName,
+        phone: formData.phone,
+        source: 'Website Contact Section',
+        dateSubmitted: new Date().toISOString()
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Contact form submitted successfully to GHL');
+        setFormSubmitted(true);
+        setFormData({ fullName: '', phone: '' });
+      } else {
+        console.error('Contact form submission failed');
+        alert('There was an error submitting your request. Please try again or call us directly.');
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting contact form:', error);
+      alert('There was an error submitting your request. Please try again or call us directly.');
+    });
   };
 
   return (
@@ -445,7 +759,46 @@ const ContactForm = () => {
                 </PhoneIcon>
                 <PhoneDetails>
                   <h4>Call us directly</h4>
-                  <a href="tel:+18005551234">(800) 555-1234</a>
+                  <a href="tel:+16047164201">+1 (604) 716 4201</a>
+                </PhoneDetails>
+              </PhoneNumber>
+
+              <PhoneNumber>
+                <PhoneIcon>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </PhoneIcon>
+                <PhoneDetails>
+                  <h4>Visit our showroom</h4>
+                  <a href="https://maps.google.com/?q=310-638+Broughton+St,+Vancouver,+BC" target="_blank" rel="noopener noreferrer">
+                    310-638 Broughton St, Vancouver, BC
+                  </a>
+                </PhoneDetails>
+              </PhoneNumber>
+
+              <PhoneNumber>
+                <PhoneIcon>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </PhoneIcon>
+                <PhoneDetails>
+                  <h4>Business Hours</h4>
+                  <p>Monday - Friday: 9:00-20:00<br />Saturday: 11:00-15:00</p>
+                </PhoneDetails>
+              </PhoneNumber>
+
+              <PhoneNumber>
+                <PhoneIcon>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </PhoneIcon>
+                <PhoneDetails>
+                  <h4>Email us</h4>
+                  <a href="mailto:info@homevisionsolutions.ca">info@homevisionsolutions.ca</a>
                 </PhoneDetails>
               </PhoneNumber>
             </ContactInfo>
@@ -490,18 +843,32 @@ const ContactForm = () => {
                 <Form onSubmit={handleSubmit}>
                   <FormGroup>
                     <label htmlFor="fullName">Full Name*</label>
-                    <input type="text" id="fullName" placeholder="John Smith" required />
+                    <input 
+                      type="text" 
+                      id="fullName" 
+                      placeholder="John Smith" 
+                      required 
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                   
                   <FormGroup>
                     <label htmlFor="phone">Phone Number*</label>
-                    <input type="tel" id="phone" placeholder="(123) 456-7890" required />
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      placeholder="(123) 456-7890" 
+                      required 
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                   
                   <ShimmerLine />
                   
                   <StyledButton type="submit">
-                    Request Callback
+                    Make an Appointment
                   </StyledButton>
                 </Form>
               </>
@@ -513,6 +880,56 @@ const ContactForm = () => {
                   Your request has been received. One of our smart home specialists will 
                   call you back within 24 hours to discuss your needs.
                 </ThankYouText>
+                <div style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  padding: '15px',
+                  borderRadius: '10px',
+                  marginBottom: '20px',
+                  border: '1px solid rgba(203, 157, 118, 0.2)'
+                }}>
+                  <h4 style={{
+                    fontSize: '1.1rem',
+                    color: 'rgba(203, 157, 118, 0.9)',
+                    margin: '0 0 10px 0'
+                  }}>
+                    What happens next?
+                  </h4>
+                  <ul style={{
+                    listStyle: 'none',
+                    padding: '0',
+                    margin: '0'
+                  }}>
+                    <li style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginBottom: '8px',
+                      fontSize: '0.9rem'
+                    }}>
+                      <span style={{ color: 'rgba(203, 157, 118, 0.9)' }}>1.</span>
+                      Our specialist will call you within 24 hours
+                    </li>
+                    <li style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginBottom: '8px',
+                      fontSize: '0.9rem'
+                    }}>
+                      <span style={{ color: 'rgba(203, 157, 118, 0.9)' }}>2.</span>
+                      We'll schedule a free in-home assessment
+                    </li>
+                    <li style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      fontSize: '0.9rem'
+                    }}>
+                      <span style={{ color: 'rgba(203, 157, 118, 0.9)' }}>3.</span>
+                      You'll receive a custom smart home plan and quote
+                    </li>
+                  </ul>
+                </div>
                 <StyledButton onClick={() => setFormSubmitted(false)}>
                   Submit Another Request
                 </StyledButton>

@@ -261,7 +261,12 @@ const SecuritySystem = () => {
               </Feature>
             </FeatureList>
             
-            <Button>Learn More About Security</Button>
+            <Button onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Learn More About Security</Button>
           </Content>
         </Grid>
       </Container>

@@ -1015,6 +1015,7 @@ const Hero = () => {
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [validationErrors, setValidationErrors] = useState<{name?: boolean, phone?: boolean}>({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
   
   const [contentRef, contentInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [featuresRef, featuresInView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -1079,9 +1080,34 @@ const Hero = () => {
       return;
     }
     
-    console.log('Form submitted:', formData);
-    alert('Thank you for your interest! Our team will contact you shortly.');
-    setFormData({ name: '', phone: '' });
+    // Send data to GHL webhook
+    fetch('https://services.leadconnectorhq.com/hooks/XIy9sfqFwX2Pzvq9l7VY/webhook-trigger/e01a048d-7694-408e-9078-e7d5d43188ca', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        formName: 'Hero Form',
+        name: formData.name,
+        phone: formData.phone,
+        source: 'Website Hero Section',
+        dateSubmitted: new Date().toISOString()
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Form submitted successfully to GHL');
+        setFormSubmitted(true);
+        setFormData({ name: '', phone: '' });
+      } else {
+        console.error('Form submission failed');
+        alert('There was an error submitting your request. Please try again or call us directly.');
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your request. Please try again or call us directly.');
+    });
   };
   
   return (
@@ -1119,56 +1145,112 @@ const Hero = () => {
               <Timer>{formatTime(timeLeft)}</Timer>
             </LimitedOffer>
             
-            <form onSubmit={handleSubmit}>
-              <InputRow>
-                <InputGroup>
-                  <FormLabel>Your Name</FormLabel>
-                  <FormInput 
-                    type="text" 
-                    placeholder="Enter your name" 
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className={validationErrors.name ? 'invalid' : ''}
-                  />
-                </InputGroup>
+            {formSubmitted ? (
+              <div style={{
+                textAlign: 'center',
+                padding: '25px 15px',
+                background: 'rgba(203, 157, 118, 0.1)',
+                borderRadius: '10px',
+                border: '1px solid rgba(203, 157, 118, 0.3)',
+                marginTop: '20px'
+              }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: 'rgba(203, 157, 118, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 15px',
+                  fontSize: '1.8rem',
+                  color: 'rgba(203, 157, 118, 0.9)'
+                }}>
+                  ✓
+                </div>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  color: 'rgba(203, 157, 118, 0.9)',
+                  margin: '0 0 15px 0'
+                }}>
+                  Thank You!
+                </h3>
+                <p style={{
+                  margin: '0 0 20px 0',
+                  fontSize: '1rem',
+                  lineHeight: '1.5',
+                  color: 'rgba(255, 255, 255, 0.8)'
+                }}>
+                  We've received your request for a free consultation. One of our smart home specialists will call you within 24 hours to discuss your home automation needs.
+                </p>
+                <Button 
+                  onClick={() => setFormSubmitted(false)}
+                  style={{
+                    backgroundColor: 'rgba(203, 157, 118, 0.9)',
+                    color: 'white',
+                    padding: '10px 20px',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.9rem',
+                    fontWeight: '600'
+                  }}
+                >
+                  Submit Another Request
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <InputRow>
+                  <InputGroup>
+                    <FormLabel>Your Name</FormLabel>
+                    <FormInput 
+                      type="text" 
+                      placeholder="Enter your name" 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className={validationErrors.name ? 'invalid' : ''}
+                    />
+                  </InputGroup>
+                  
+                  <InputGroup>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormInput 
+                      type="tel" 
+                      placeholder="Enter your phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className={validationErrors.phone ? 'invalid' : ''}
+                    />
+                  </InputGroup>
+                </InputRow>
                 
-                <InputGroup>
-                  <FormLabel>Phone Number</FormLabel>
-                  <FormInput 
-                    type="tel" 
-                    placeholder="Enter your phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={validationErrors.phone ? 'invalid' : ''}
-                  />
-                </InputGroup>
-              </InputRow>
-              
-              <BenefitsList>
-                <BenefitItem>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Free in-home assessment ($150 value)
-                </BenefitItem>
-                <BenefitItem>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Personalized smart home plan
-                </BenefitItem>
-                <BenefitItem>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  No obligation quote
-                </BenefitItem>
-              </BenefitsList>
-              
-              <SubmitButton type="submit">Schedule Consultation</SubmitButton>
-            </form>
+                <BenefitsList>
+                  <BenefitItem>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Free in-home assessment ($150 value)
+                  </BenefitItem>
+                  <BenefitItem>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Personalized smart home plan
+                  </BenefitItem>
+                  <BenefitItem>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    No obligation quote
+                  </BenefitItem>
+                </BenefitsList>
+                
+                <SubmitButton type="submit">Make an Appointment</SubmitButton>
+              </form>
+            )}
             
             <SocialProof>
               <svg viewBox="0 0 24 24" fill="currentColor">

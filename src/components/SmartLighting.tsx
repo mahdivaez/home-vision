@@ -93,6 +93,18 @@ const LightingSection = styled.section`
   color: #fff;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 100px 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 60px 0;
+  }
 `;
 
 const BackgroundEffect = styled.div`
@@ -115,6 +127,14 @@ const Container = styled.div`
   padding: 0 30px;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 15px;
+  }
 `;
 
 const SectionHeader = styled.div<{ inView: boolean }>`
@@ -123,6 +143,14 @@ const SectionHeader = styled.div<{ inView: boolean }>`
   opacity: ${props => props.inView ? 1 : 0};
   transform: translateY(${props => props.inView ? 0 : '30px'});
   transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  @media (max-width: 768px) {
+    margin-bottom: 60px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -133,6 +161,18 @@ const SectionTitle = styled.h2`
   display: inline-block;
   font-weight: 700;
   letter-spacing: -0.5px;
+  
+  @media (max-width: 992px) {
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
+  }
   
   span {
     background: linear-gradient(90deg, #e94ca1, #f5b454, #42c6ff);
@@ -151,6 +191,17 @@ const SectionSubtitle = styled.p`
   margin: 25px auto 0;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 15px;
+  }
 `;
 
 // Hero image section
@@ -220,6 +271,14 @@ const ContentWrapper = styled.div<{ inView: boolean }>`
     grid-template-columns: 1fr;
     gap: 60px;
   }
+  
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -274,6 +333,19 @@ const LightingControls = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin-left: 40px;
   margin-right: 40px;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -30px;
+  }
 `;
 
 const ControlsTitle = styled.h4`
@@ -283,9 +355,19 @@ const ControlsTitle = styled.h4`
   align-items: center;
   color: rgba(255, 255, 255, 0.9);
   
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
   svg {
     margin-right: 10px;
     color: rgba(255, 238, 150, 0.9);
+    
+    @media (max-width: 480px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -359,6 +441,12 @@ const ColorPicker = styled.div`
   gap: 10px;
   justify-content: space-between;
   margin-top: 15px;
+  
+  @media (max-width: 480px) {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 `;
 
 interface ColorButtonProps {
@@ -376,6 +464,13 @@ const ColorButton = styled.button<ColorButtonProps>`
   transition: all 0.2s ease;
   box-shadow: ${props => props.active ? `0 0 15px ${props.color}` : 'none'};
   
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    margin-bottom: 8px;
+  }
+  
   &:hover {
     transform: scale(1.1);
   }
@@ -388,6 +483,17 @@ const Subtitle = styled.div`
   margin-bottom: 15px;
   color: rgba(203, 157, 118, 0.9);
   font-weight: 500;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Title = styled.h2`
@@ -395,6 +501,15 @@ const Title = styled.h2`
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 2.4rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
   
   span {
     background: linear-gradient(90deg, rgba(203, 157, 118, 0.9), rgba(178, 132, 93, 0.9));
@@ -409,6 +524,17 @@ const Description = styled.p`
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 30px;
   line-height: 1.7;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
 `;
 
 const FeatureList = styled.div`
@@ -423,6 +549,14 @@ const FeatureItem = styled.div<{ inView: boolean; delay: number }>`
   transform: translateX(${props => props.inView ? 0 : '30px'});
   transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition-delay: ${props => `${props.delay * 0.1}s`};
+  
+  @media (max-width: 768px) {
+    margin-bottom: 25px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+  }
   
   &:last-child {
     margin-bottom: 0;
@@ -440,10 +574,30 @@ const FeatureIcon = styled.div`
   justify-content: center;
   margin-right: 20px;
   
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    margin-right: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    margin-right: 12px;
+  }
+  
   svg {
     color: rgba(203, 157, 118, 0.9);
     width: 24px;
     height: 24px;
+    
+    @media (max-width: 480px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -453,12 +607,31 @@ const FeatureContent = styled.div`
     font-weight: 600;
     margin-bottom: 10px;
     color: white;
+    
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
   }
   
   p {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
+    
+    @media (max-width: 768px) {
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
   }
 `;
 
@@ -472,6 +645,20 @@ const ActionButton = styled(Button)`
   font-weight: 600;
   border-radius: 50px;
   box-shadow: 0 10px 20px rgba(203, 157, 118, 0.3);
+  
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 25px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
   
   &:hover {
     transform: translateY(-5px);
@@ -563,7 +750,12 @@ const SmartLighting = () => {
               ))}
             </FeatureList>
             
-            <ActionButton>Explore Lighting Solutions</ActionButton>
+            <ActionButton onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Explore Lighting Solutions</ActionButton>
           </ContentContainer>
           
           <LightingDemo>

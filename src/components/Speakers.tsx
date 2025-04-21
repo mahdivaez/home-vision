@@ -723,6 +723,12 @@ const Speakers = () => {
                   borderRadius: "12px",
                   fontWeight: "600"
                 }}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Learn More
               </Button>

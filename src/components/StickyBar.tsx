@@ -13,6 +13,10 @@ const StickyContainer = styled.div<{ isVisible: boolean }>`
   z-index: 1000;
   transition: transform 0.3s ease;
   transform: translateY(${props => props.isVisible ? '0' : '100%'});
+  
+  @media (max-width: 480px) {
+    padding: 8px 0;
+  }
 `;
 
 const Container = styled.div`
@@ -25,7 +29,13 @@ const Container = styled.div`
   
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    padding: 8px 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 5px 12px;
+    gap: 8px;
   }
 `;
 
@@ -37,6 +47,14 @@ const OfferText = styled.div`
   
   .icon {
     font-size: 1.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
   }
   
   .text {
@@ -44,12 +62,94 @@ const OfferText = styled.div`
       color: var(--primary);
       font-weight: 600;
     }
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
   }
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100%;
+    gap: 8px;
+  }
+`;
+
+const ActionContainer = styled.div`
+  display: flex; 
+  align-items: center; 
+  gap: 20px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    flex-direction: row;
+    gap: 8px;
+  }
+`;
+
+const PhoneLink = styled.a`
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  
+  &:hover, &:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  
+  @media (max-width: 480px) {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+  
+  svg {
+    @media (max-width: 480px) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+`;
+
+const AppointmentButton = styled(Button)`
+  padding: 10px 20px;
+  
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 0.75rem;
   }
 `;
 
@@ -87,12 +187,21 @@ const StickyBar = () => {
           </div>
         </OfferText>
         
-        <Button 
-          primary
-          onClick={() => scrollToSection('contact')}
-        >
-          Book My Free Consult
-        </Button>
+        <ActionContainer>
+          <PhoneLink href="tel:+16047164201">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            +1 (604) 716 4201
+          </PhoneLink>
+          
+          <AppointmentButton 
+            primary
+            onClick={() => scrollToSection('contact')}
+          >
+            Make an Appointment
+          </AppointmentButton>
+        </ActionContainer>
       </Container>
     </StickyContainer>
   );
